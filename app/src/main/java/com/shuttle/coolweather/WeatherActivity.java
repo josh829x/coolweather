@@ -1,5 +1,6 @@
 package com.shuttle.coolweather;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.shuttle.coolweather.gson.Forecast;
 import com.shuttle.coolweather.gson.Weather;
+import com.shuttle.coolweather.service.AutoUpdateService;
 import com.shuttle.coolweather.util.HttpUtil;
 import com.shuttle.coolweather.util.Utility;
 
@@ -214,5 +216,7 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }
